@@ -23,12 +23,6 @@
     
         - Acessando o terminal, o comando `composer -v` deve retornar a versão.
 
-### `Node ^v18.18.0` - [Download⬇️](https://nodejs.org/dist/v18.18.0/node-v18.18.0-x64.msi)
-
-1. **A instalação no windows é também simples, basta ir clicando next:**
-      
-        - Acessando o terminal, o comando `node -v` deve retornar a versão .
-
 ### `.env` 
 
         - Crie um arquivo `.env` na pasta raiz do projeto e cole tudo de `.env.example`  

@@ -1,53 +1,41 @@
-# Teste Prático de Desenvolvimento
+# Trabalho Final: Desenvolvimento de uma solução dentro do tópico de Sistema Distribuído
 
-Este teste foi cuidadosamente elaborado para nos permitir avaliar suas habilidades técnicas, criatividade e aderência às boas práticas de programação, incluindo os princípios SOLID e DRY.
+## Introdução
 
-## Detalhes do Teste
+Você e sua equipe foram contratados para projetar e implementar uma solução dentro dos tópicos de sistema distribuído que atenda a um cenário específico. O sistema deve ser capaz de processar dados, distribuir tarefas e garantir a escalabilidade e a confiabilidade. O trabalho será dividido em três etapas, cada uma com sua respectiva pontuação.
 
-**Objetivo:** Desenvolver uma aplicação web que demonstre sua capacidade de criar soluções eficazes e bem estruturadas utilizando Laravel 10, MySQL, MongoDB e Vue.js.
+## Etapas do Trabalho
 
-### 1. Requisitos
-Desenvolver uma aplicação web pequena, mas funcional, que possa ser utilizada para gerenciar um aspecto específico de um negócio ou de uma atividade. Por exemplo, um sistema de gestão de tarefas, um catálogo de produtos, ou um sistema de reservas.
+### Etapa 1: Artigo no Padrão SBPC (02 pontos)
 
-### 2. Requisitos Técnicos
-- **Backend:** Desenvolvido com Laravel 10, utilizando MySQL para dados relacionais e MongoDB para dados não-relacionais.
-- **Frontend:** Algumas funcionalidades devem ser implementadas com Vue.js para criar uma experiência interativa no lado do cliente.
-- **Autenticação e Autorização:** Implementar funcionalidades de login/logout e restrição de acesso com base em diferentes tipos de usuários (por exemplo, administrador e usuário regular).
+- Descrição: Elabore um artigo científico seguindo o padrão da Sociedade Brasileira para o Progresso da Ciência (SBPC). O artigo deve abordar os seguintes tópicos:
+    - Introdução: Contextualização sobre sistemas distribuídos e sua importância.
+    - Arquitetura Proposta: Descrição da arquitetura escolhida para o sistema.
+    - Implementação: Detalhes técnicos sobre a implementação das funcionalidades.
+    - Resultados e Discussão: Avaliação dos resultados obtidos.
+    - Conclusão: Considerações finais e possíveis melhorias.
 
-### 3. Critérios de Avaliação
-- **Qualidade do Código:** Clareza, manutenção, e a organização do código, seguindo os princípios SOLID e DRY.
-- **Estrutura do Projeto:** Organização dos arquivos e pastas, nomes de classes e métodos claros e descritivos.
-- **Implementação do Laravel:** Uso eficaz de rotas, controllers, models, migrations, seeders, e middlewares.
-- **Integração com Banco de Dados:** Modelagem e acesso a dados com MySQL e MongoDB, incluindo relações, consultas eficientes e uso de Eloquent ORM.
-- **Frontend com Vue.js:** Implementação de componentes dinâmicos, comunicação com o backend via AJAX, e reatividade.
-- **Segurança:** Implementação de medidas de segurança, como proteção contra CSRF, XSS, e injeção de SQL.
-- **Documentação:** Incluir um README detalhado com instruções para configurar e executar o projeto, além de uma descrição das escolhas técnicas feitas.
+### Etapa 2: Apresentação Resumida (02 pontos)
 
-### 4. Tarefa Prática
-Propor uma tarefa que englobe os aspectos acima, como:
+- Descrição: Crie uma apresentação em formato PDF que resuma os principais pontos do seu sistema distribuído. A apresentação deve ser clara, objetiva e visualmente atraente. Inclua slides sobre a arquitetura, os desafios enfrentados e os resultados alcançados.
 
-**Desenvolver um sistema de gerenciamento de tarefas.**
+### Etapa 3: Demonstração Online (02 pontos)
 
-#### Funcionalidades:
-- Criação, edição, exclusão, e listagem de tarefas.
-- Atribuição de tarefas a usuários específicos.
-- Marcação de tarefas como concluídas.
+- Descrição: Disponibilize uma demonstração do sistema rodando na Internet. Isso pode ser feito por meio de um site, aplicação web ou serviço online. Certifique-se de que a solução esteja funcional e acessível para avaliação.
 
-#### Extras:
-- Implementar filtros de visualização (por exemplo, tarefas concluídas, pendentes, por usuário).
-- Utilizar Vue.js para criar uma interface dinâmica para a edição e atualização de tarefas sem necessidade de recarregar a página.
+## Critérios de Avaliação
 
-#### Avaliação:
-Seremos atentos à qualidade do código, estrutura do projeto, utilização das tecnologias solicitadas, implementação das funcionalidades e documentação fornecida.
+- Originalidade e criatividade na escolha da arquitetura.
+- Qualidade do artigo científico.
+- Clareza e concisão na apresentação.
+- Funcionalidade da demonstração online.
 
-### 5. Entrega e Apresentação
-- Deverá ser fornecido o código-fonte via um repositório Git (por exemplo, GitHub, GitLab).
-- Breve apresentação do projeto, explicando as decisões de design, desafios enfrentados e como eles foram superados.
-- O teste deverá ser enviado no email: XXX
+## Prazos
 
-Este teste não apenas avalia a capacidade técnica em trabalhar com Laravel e tecnologias associadas, mas também demonstrar sua capacidade de pensar de forma analítica e criativa ao resolver problemas e projetar uma solução.
+- Entrega do Artigo e Apresentação: (data a ser definida 👁👁).
+- Apresentação Online: (data a ser definida 👁👁).
 
-**Tempo para entrega:** 5 dias.
+Lembre-se de trabalhar em equipe, distribuir as tarefas de forma equilibrada e garantir a colaboração de todos os membros. Bom trabalho! 🌟👽🥷🥷
 
 
 [Voltar a pagina principal](/README.md)
