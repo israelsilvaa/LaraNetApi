@@ -27,8 +27,7 @@ Descrição aqui...
 
 Pré-requisitos, instale em ordem (windows) - [Como instalar](/docs/instalacao_dependencias_execucao.md)
 1. Xampp v3.3 
-2. Composer v2.5 
-3. Node v18.X 
+2. Composer v2.5
  
 Após baixar e instalar as dependências, execute os passos:
 
@@ -47,22 +46,8 @@ Após baixar e instalar as dependências, execute os passos:
    - php artisan jwt:secret
 
    - php artisan serve
-   
-   Em outro terminal, executar:  
-
-   - npm install
-   
-   - npm install vuex
-   
-   - npm run dev
 
 Após isso basta clicar no link que aparecera no terminal ou acessar em seu navegador a url: http://127.0.0.1:8000
-
-## Use o acesso abaixo:
-
-login: esocial@teste   
-senha: 123123123
-
   
 ## Autenticação
 
