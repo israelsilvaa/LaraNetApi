@@ -43,7 +43,7 @@ services:
       test: ["CMD", "redis-cli", "ping"]
 
   queue:
-    image: kooldev/php:8.1-nginx
+    image: kooldev/php:8.2-nginx
     restart: unless-stopped
     command: php artisan queue:work
     depends_on:

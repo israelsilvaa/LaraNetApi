@@ -1,4 +1,6 @@
 <?php
+use App\Models\UsuarioEmpresa;
+use App\Models\UsuarioEstudante;
 
 return [
 
@@ -40,10 +42,20 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
-        
+
         'api' => [
             'driver' => 'jwt',
             'provider' => 'users',
+        ],
+        "empresa" => [
+            "driver" => "jwt",
+            "provider" => "usuarios_empresas",
+
+        ],
+
+        "estudante" => [
+            "driver" => "jwt",
+            "provider" => "usuarios_estudante",
         ],
     ],
 
@@ -69,7 +81,14 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
         ],
-
+        'usuarios_estudante' => [
+            'driver' => 'eloquent',
+            'model' => UsuarioEstudante::class,
+        ],
+        'usuarios_empresas' => [
+            'driver' => 'eloquent',
+            'model' => UsuarioEmpresa::class,
+        ],
         // 'users' => [
         //     'driver' => 'database',
         //     'table' => 'users',
