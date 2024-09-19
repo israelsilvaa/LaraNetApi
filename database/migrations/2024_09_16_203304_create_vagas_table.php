@@ -13,11 +13,12 @@ return new class extends Migration
     {
         Schema::create('vagas', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('empresa_id')->constrained('empresas')->onDelete('cascade');
-            $table->string('titulo');
+            $table->string('nome');
             $table->text('descricao');
-            $table->enum('modalidade', ['Presencial', 'Remoto', 'Híbrido'])->default('Presencial');
-            $table->text('requisitos')->nullable();
+            $table->enum('tipo_estagio', ['Presencial', "Remoto", "Híbrido"]);
+            $table->enum('turno', ['Matutino', "Vespertino", "Noturno"]);
+            $table->decimal('valor', 15, 2)->nullable();
+            $table->foreignId('usuario_empresa_id')->constrained('usuarios_empresas')->onDelete('CASCADE');
             $table->timestamps();
         });
     }

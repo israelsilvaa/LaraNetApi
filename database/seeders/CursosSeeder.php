@@ -12,76 +12,153 @@ class CursosSeeder extends Seeder
      */
     public function run(): void
     {
-        $curso = new Curso();
-        $curso->curso = 'Licenciatura Integrada em Ciências, Matemática e Linguagens';
-        $curso->modalidade = 'Licenciatura';
-        $curso->regimeOferta = 'Extensivo';
-        $curso->turno = 'A Distância';
-        $curso->save();
-        
-        $curso = new Curso();
-        $curso->curso = 'Matemática';
-        $curso->modalidade = 'Licenciatura';
-        $curso->regimeOferta = 'Extensivo';
-        $curso->turno = 'A Distância';
-        $curso->save();
-        
-        $curso = new Curso();
-        $curso->curso = 'Biologia';
-        $curso->modalidade = 'Licenciatura';
-        $curso->regimeOferta = 'Extensivo';
-        $curso->turno = 'A Distância';
-        $curso->save();
-        
-        $curso = new Curso();
-        $curso->curso = 'Letras-Português ';
-        $curso->modalidade = 'Licenciatura';
-        $curso->regimeOferta = 'Extensivo';
-        $curso->turno = 'A Distância';
-        $curso->save();
-                
-        $curso = new Curso();
-        $curso->curso = 'Química';
-        $curso->modalidade = 'Licenciatura';
-        $curso->regimeOferta = 'Extensivo';
-        $curso->turno = 'A Distância';
-        $curso->save();
 
-        $curso = new Curso();
-        $curso->curso = 'Física';
-        $curso->modalidade = 'Licenciatura';
-        $curso->regimeOferta = 'Extensivo';
-        $curso->turno = 'A Distância';
-        $curso->save();
-        
-        $curso = new Curso();
-        $curso->curso = 'Sistemas De Informação';
-        $curso->modalidade = 'Bacharel';
-        $curso->regimeOferta = 'Extensivo';
-        $curso->turno = 'A Distância';
-   
-        $curso->save();
-        $curso = new Curso();
-        $curso->curso = 'Ciência da computação';
-        $curso->modalidade = 'Bacharel';
-        $curso->regimeOferta = 'Extensivo';
-        $curso->turno = 'A Distância';
-        $curso->save();
-   
-        $curso = new Curso();
-        $curso->curso = 'Engenharia da computação';
-        $curso->modalidade = 'Bacharel';
-        $curso->regimeOferta = 'Extensivo';
-        $curso->turno = 'A Distância';
-        $curso->save();
-   
-        $curso = new Curso();
-        $curso->curso = 'Analise e desenvolvimento de sistemas';
-        $curso->modalidade = 'Tecnólogo';
-        $curso->regimeOferta = 'Extensivo';
-        $curso->turno = 'A Distância';
-        $curso->save();
-        
 
+        $cursos = [
+            'Administração',
+            'Administração Pública',
+            'Agroecologia',
+            'Agronegócio',
+            'Agronomia',
+            'Análise de Sistemas',
+            'Antropologia',
+            'Arquitetura e Urbanismo',
+            'Arquivologia',
+            'Artes',
+            'Artes Cênicas',
+            'Astronomia',
+            'Biblioteconomia',
+            'Biologia',
+            'Biomedicina',
+            'Bioquímica',
+            'Canto',
+            'Cenografia',
+            'Ciência da Computação',
+            'Ciências Biológicas',
+            'Ciências Contábeis',
+            'Ciências Econômicas',
+            'Ciências Sociais',
+            'Cinema e Audiovisual',
+            'Composição e Regência',
+            'Computação',
+            'Comunicação e Marketing',
+            'Comunicação Social',
+            'Desenho Industrial',
+            'Design',
+            'Design de Ambientes',
+            'Design de Games',
+            'Design de Interiores',
+            'Design de Moda',
+            'Design de Produto',
+            'Design Digital',
+            'Design Gráfico',
+            'Direção',
+            'Direito',
+            'Educação Física',
+            'Enfermagem',
+            'Engenharia Acústica',
+            'Engenharia Aeroespacial',
+            'Engenharia Aeronáutica',
+            'Engenharia Agrícola',
+            'Engenharia Agroindustrial',
+            'Engenharia Agronômica',
+            'Engenharia Ambiental',
+            'Engenharia Automotiva',
+            'Engenharia Bioenergética',
+            'Engenharia Biomédica',
+            'Engenharia Bioquímica',
+            'Engenharia Biotecnológica',
+            'Engenharia Cartográfica',
+            'Engenharia Civil',
+            'Engenharia da Computação',
+            'Engenharia da Mobilidade',
+            'Engenharia de Agrimensura',
+            'Engenharia de Agronegócios',
+            'Engenharia de Alimentos',
+            'Engenharia de Aquicultura',
+            'Engenharia de Automação',
+            'Engenharia de Bioprocessos',
+            'Engenharia de Biossistemas',
+            'Engenharia de Biotecnologia',
+            'Engenharia de Energia',
+            'Engenharia de Gestão',
+            'Engenharia de Informação',
+            'Engenharia de Instrumentação, Automação e Robótica',
+            'Engenharia de Manufatura',
+            'Engenharia de Materiais',
+            'Engenharia de Minas',
+            'Engenharia de Pesca',
+            'Engenharia de Petróleo',
+            'Engenharia de Produção',
+            'Engenharia de Recursos Hídricos',
+            'Engenharia de Saúde e Segurança',
+            'Engenharia de Sistemas',
+            'Engenharia de Software',
+            'Engenharia de Telecomunicações',
+            'Engenharia de Transporte e Logística',
+            'Engenharia Elétrica',
+            'Engenharia Eletrônica',
+            'Engenharia em Sistemas Digitais',
+            'Engenharia Ferroviária e Metroviária',
+            'Engenharia Física',
+            'Engenharia Florestal',
+            'Engenharia Geológica',
+            'Engenharia Hídrica',
+            'Engenharia Industrial',
+            'Engenharia Mecânica',
+            'Engenharia Mecatrônica',
+            'Engenharia Metalúrgica',
+            'Engenharia Naval',
+            'Engenharia Química',
+            'Engenharia Têxtil',
+            'Estatística',
+            'Farmácia',
+            'Filosofia',
+            'Física',
+            'Fisioterapia',
+            'Fonoaudiologia',
+            'Geografia',
+            'Gestão Ambiental',
+            'Gestão da Informação',
+            'Gestão de Políticas Públicas',
+            'Gestão de Serviços de Saúde',
+            'Gestão do Agronegócio',
+            'Gestão Pública',
+            'História',
+            'Hotelaria',
+            'Jornalismo',
+            'Letras',
+            'Marketing',
+            'Matemática',
+            'Mecânica Industrial',
+            'Medicina',
+            'Medicina Veterinária',
+            'Moda',
+            'Música',
+            'Nutrição',
+            'Odontologia',
+            'Pedagogia',
+            'Políticas Públicas',
+            'Propaganda e Marketing',
+            'Psicologia',
+            'Publicidade e Propaganda',
+            'Química',
+            'Rádio, TV e Internet',
+            'Relações Internacionais',
+            'Relações Públicas',
+            'Secretariado Executivo',
+            'Serviço Social',
+            'Sistemas de Informação',
+            'Tecnologias Digitais',
+            'Teologia',
+            'Terapia Ocupacional',
+            'Tradutor e Intérprete',
+            'Turismo',
+            'Zootecnia'
+        ];
+
+        foreach ($cursos as $curso) {
+            Curso::createOrFirst(['nome' => $curso]);
+        }
     }
 }

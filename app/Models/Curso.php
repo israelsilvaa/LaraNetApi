@@ -9,5 +9,12 @@ class Curso extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['curso', 'modalidade', 'regimeOferta', 'turno'];
+    protected $fillable = ['nome'];
+
+
+    
+    public function vagas()
+    {
+        return $this->belongsToMany(Vaga::class, 'vagas_cursos', 'curso_id', 'vaga_id');
+    }
 }

@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthEmpresaController;
 use App\Http\Controllers\AuthEstudanteController;
 use App\Http\Controllers\RegisterUsuarioEmpresa;
 use App\Http\Controllers\RegisterUsuarioEstudante;
+use App\Http\Controllers\VagaController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
@@ -26,8 +27,6 @@ Route::group(['middleware' => 'api'], function ($router) {
     Route::post('empresa/registrar', RegisterUsuarioEmpresa::class)->name('auth.empresa.register');
     Route::group(['prefix' => 'auth'], function ($router) {
 
-
-
         Route::group(['prefix' => 'estudante'], function ($router) {
 
             Route::post('login', [AuthEstudanteController::class, 'login'])->name('auth.estudante.login');
@@ -46,12 +45,35 @@ Route::group(['middleware' => 'api'], function ($router) {
                 Route::get('me', [AuthEmpresaController::class, 'me'])->name('auth.empresa.me');
                 Route::post('logout', [AuthEmpresaController::class, 'logout'])->name('auth.empresa.logout');
             });
+
+
         });
 
 
     });
 
+    Route::group(['prefix' => 'empresa', 'middleware' => 'auth:empresa'], function ($router) {
 
+        
+
+        Route::group(['prefix' => 'vaga' ], function ($router) {
+
+            Route::post('', [VagaController::class, 'store'])->name('vaga.store');
+            Route::put('/{vaga}', [VagaController::class, 'update'])->name('vaga.update');
+            Route::delete('/{vaga}', [VagaController::class, 'destroy'])->name('vaga.destroy');
+
+
+        });
+
+    });
+
+    Route::group(['prefix' => 'vaga'], function ($router) {
+
+        Route::get('/{vaga}', [VagaController::class, 'show'])->name('vaga.show');
+
+
+
+    });
 
 
 });
