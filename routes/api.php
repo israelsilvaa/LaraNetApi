@@ -59,6 +59,14 @@ Route::group(['middleware' => 'api'], function ($router) {
 
     });
 
+    Route::group(['prefix' => 'estudante', 'middleware' => 'auth:estudante'], function ($router) {
+
+        Route::group(['prefix' => 'vaga'], function ($router) {
+            Route::get('/inscrever/{vaga}', [VagaController::class, 'inscreverEstudanteVaga'])->name('vaga.inscrever');
+            
+        });
+
+    });
     Route::group(['prefix' => 'vaga'], function ($router) {
         Route::get('', [VagaController::class, 'index'])->name('vaga.index');
         Route::get('/{vaga}', [VagaController::class, 'show'])->name('vaga.show');

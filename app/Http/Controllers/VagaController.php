@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\VagaFormRequest;
 use App\Models\Vaga;
+use App\Models\VagaEstudante;
 use App\Services\VagaService;
 use Auth;
 use Illuminate\Http\JsonResponse;
@@ -34,7 +35,7 @@ class VagaController extends Controller
     public function showVagasByEmpresaAuth(): JsonResponse
     {
 
-        $userID = Auth::user()->id;
+        $userID = Auth::guard('empresa')->user()->id;
         $vagas = $this->vagaService->getVagasByEmpresa($userID)->paginate(10);
 
         return response()->json($vagas);
@@ -50,7 +51,7 @@ class VagaController extends Controller
         $dados = $request->validated();
 
 
-        $userID = Auth::user()->id;
+        $userID = Auth::guard('empresa')->user()->id;
         $vaga = $this->vagaService->save($dados, $userID);
 
         return response()->json($vaga);
@@ -60,7 +61,7 @@ class VagaController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Vaga $vaga)
+    public function show(Vaga $vaga): JsonResponse
     {
         return response()->json($vaga);
     }
@@ -69,7 +70,7 @@ class VagaController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(VagaFormRequest $request, Vaga $vaga)
+    public function update(VagaFormRequest $request, Vaga $vaga): JsonResponse
     {
 
         $this->authorizeForUser(auth()->guard('empresa')->user(), 'update', $vaga);
@@ -93,6 +94,24 @@ class VagaController extends Controller
 
 
         return response()->noContent();
+
+    }
+
+    public function inscreverEstudanteVaga(Vaga $vaga)
+    {
+        $estudanteId = Auth::guard('estudante')->user()->id;
+
+        if (!$vaga->estudanteEstaEscrito($estudanteId)) {
+            VagaEstudante::create([
+                "vaga_id" => $vaga->id,
+                "usuario_estudante_id" => $estudanteId
+            ]);
+
+            return response()->json(["message" => "Inscrição Realizada com sucesso"], 201);
+        }
+
+        return response()->json(["message" => "O estudante já está escrito na vaga"], 400);
+
 
     }
 }

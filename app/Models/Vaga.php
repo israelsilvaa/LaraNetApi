@@ -26,6 +26,10 @@ class Vaga extends Model
         return $this->belongsTo(UsuarioEmpresa::class, 'usuario_empresa_id');
     }
 
+    public function estudantes(): BelongsToMany
+    {
+        return $this->belongsToMany(UsuarioEstudante::class, 'vagas_estudantes', 'vaga_id', 'usuario_estudante_id');
+    }
 
     public function scopeSearchByEmpresaName(Builder $query, string $nomeEmpresa): Builder
     {
@@ -33,5 +37,10 @@ class Vaga extends Model
         return $query->whereHas('empresa', function ($query) use ($nomeEmpresa) {
             $query->where('nome', 'like', '%' . $nomeEmpresa . '%');
         });
+    }
+
+    public function estudanteEstaEscrito(int $estudanteID){
+
+        return $this->estudantes()->where('usuario_estudante_id', $estudanteID)->exists();
     }
 }
