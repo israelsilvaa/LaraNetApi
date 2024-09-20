@@ -45,24 +45,16 @@ Route::group(['middleware' => 'api'], function ($router) {
                 Route::get('me', [AuthEmpresaController::class, 'me'])->name('auth.empresa.me');
                 Route::post('logout', [AuthEmpresaController::class, 'logout'])->name('auth.empresa.logout');
             });
-
-
         });
-
-
     });
 
     Route::group(['prefix' => 'empresa', 'middleware' => 'auth:empresa'], function ($router) {
 
-
-
         Route::group(['prefix' => 'vaga'], function ($router) {
-
+            Route::get('/minhas-vagas', [VagaController::class, 'showVagasByEmpresaAuth'])->name('vaga.minhas-vagas');
             Route::post('', [VagaController::class, 'store'])->name('vaga.store');
             Route::put('/{vaga}', [VagaController::class, 'update'])->name('vaga.update');
             Route::delete('/{vaga}', [VagaController::class, 'destroy'])->name('vaga.destroy');
-
-
         });
 
     });

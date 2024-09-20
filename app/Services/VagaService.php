@@ -11,8 +11,6 @@ use Illuminate\Support\Facades\DB;
 class VagaService
 {
 
-
-
     public function search(array $data): Vaga|Builder
     {
         return Vaga::orderBy('nome')
@@ -32,7 +30,13 @@ class VagaService
                 $query->searchByEmpresaName($data['nome_empresa']);
             });
     }
+    public function getVagasByEmpresa(int $empresaID): Vaga|Builder
+    {
 
+        $vagas = Vaga::where('usuario_empresa_id', $empresaID);
+
+        return $vagas;
+    }
     public function save(array $data, int $userID): Model|Vaga
     {
         return DB::transaction(function () use ($data, $userID) {

@@ -31,12 +31,21 @@ class VagaController extends Controller
         return response()->json($vagas);
     }
 
+    public function showVagasByEmpresaAuth(): JsonResponse
+    {
 
+        $userID = Auth::user()->id;
+        $vagas = $this->vagaService->getVagasByEmpresa($userID)->paginate(10);
+
+        return response()->json($vagas);
+
+
+    }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(VagaFormRequest $request):JsonResponse
+    public function store(VagaFormRequest $request): JsonResponse
     {
         $dados = $request->validated();
 
