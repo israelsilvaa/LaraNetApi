@@ -54,9 +54,9 @@ Route::group(['middleware' => 'api'], function ($router) {
 
     Route::group(['prefix' => 'empresa', 'middleware' => 'auth:empresa'], function ($router) {
 
-        
 
-        Route::group(['prefix' => 'vaga' ], function ($router) {
+
+        Route::group(['prefix' => 'vaga'], function ($router) {
 
             Route::post('', [VagaController::class, 'store'])->name('vaga.store');
             Route::put('/{vaga}', [VagaController::class, 'update'])->name('vaga.update');
@@ -68,7 +68,7 @@ Route::group(['middleware' => 'api'], function ($router) {
     });
 
     Route::group(['prefix' => 'vaga'], function ($router) {
-
+        Route::get('', [VagaController::class, 'index'])->name('vaga.index');
         Route::get('/{vaga}', [VagaController::class, 'show'])->name('vaga.show');
 
 

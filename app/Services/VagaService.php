@@ -4,11 +4,35 @@ namespace App\Services;
 
 use App\Models\Vaga;
 use App\Models\VagaCurso;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 
 class VagaService
 {
+
+
+
+    public function search(array $data): Vaga|Builder
+    {
+        return Vaga::orderBy('nome')
+            ->when(isset($data['nome']) && $data['nome'], function ($query) use ($data) {
+                $query->where('nome', 'like', '%' . $data['nome'] . '%');
+            })
+            ->when(isset($data['descricao']) && $data['descricao'], function ($query) use ($data) {
+                $query->where('descricao', 'like', '%' . $data['descricao'] . '%');
+            })
+            ->when(isset($data['tipo_estagio']) && $data['tipo_estagio'], function ($query) use ($data) {
+                $query->where('tipo_estagio', $data['tipo_estagio']);
+            })
+            ->when(isset($data['turno']) && $data['turno'], function ($query) use ($data) {
+                $query->where('turno', $data['turno']);
+            })
+            ->when(isset($data['nome_empresa']) && $data['nome_empresa'], function ($query) use ($data) {
+                $query->searchByEmpresaName($data['nome_empresa']);
+            });
+    }
+
     public function save(array $data, int $userID): Model|Vaga
     {
         return DB::transaction(function () use ($data, $userID) {

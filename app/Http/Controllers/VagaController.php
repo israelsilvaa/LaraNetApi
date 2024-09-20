@@ -6,6 +6,7 @@ use App\Http\Requests\VagaFormRequest;
 use App\Models\Vaga;
 use App\Services\VagaService;
 use Auth;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class VagaController extends Controller
@@ -22,11 +23,12 @@ class VagaController extends Controller
 
 
 
-
-
-    public function index()
+    public function index(Request $request): JsonResponse
     {
+        $vagas = $this->vagaService->search($request->all())->paginate(10);
 
+
+        return response()->json($vagas);
     }
 
 
@@ -34,7 +36,7 @@ class VagaController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(VagaFormRequest $request)
+    public function store(VagaFormRequest $request):JsonResponse
     {
         $dados = $request->validated();
 
