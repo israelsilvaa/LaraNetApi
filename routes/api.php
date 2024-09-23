@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthEstudanteController;
 use App\Http\Controllers\RegisterUsuarioEmpresa;
 use App\Http\Controllers\RegisterUsuarioEstudante;
 use App\Http\Controllers\VagaController;
+use App\Http\Controllers\VagaEstudanteController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
@@ -62,8 +63,8 @@ Route::group(['middleware' => 'api'], function ($router) {
     Route::group(['prefix' => 'estudante', 'middleware' => 'auth:estudante'], function ($router) {
 
         Route::group(['prefix' => 'vaga'], function ($router) {
-            Route::get('/inscrever/{vaga}', [VagaController::class, 'inscreverEstudanteVaga'])->name('vaga.inscrever');
-            
+            Route::get('/inscrever/{vaga}', [VagaEstudanteController::class, 'inscreverEstudanteVaga'])->name('vaga.inscrever');
+            Route::get('/remover-inscricao/{vaga}', [VagaEstudanteController::class, 'removerInscricao'])->name('vaga.remover-inscricao');
         });
 
     });
