@@ -3,6 +3,8 @@
 use App\Http\Controllers\AuthEmpresaController;
 use App\Http\Controllers\AuthEstudanteController;
 use App\Http\Controllers\FormacaoAcademicaController;
+use App\Http\Controllers\IdiomaController;
+use App\Http\Controllers\IdiomaEstudanteController;
 use App\Http\Controllers\RegisterUsuarioEmpresa;
 use App\Http\Controllers\RegisterUsuarioEstudante;
 use App\Http\Controllers\VagaController;
@@ -75,11 +77,23 @@ Route::group(['middleware' => 'api'], function ($router) {
             
         });
 
+        Route::group(['prefix' => 'idioma'], function ($router) {
+            Route::get('meus-idiomas', [IdiomaEstudanteController::class, 'showByEstudanteAutenticado'])->name('idioma.meus-idiomas');
+            
+
+            Route::post('', [IdiomaEstudanteController::class, 'store'])->name('idioma.store');
+            Route::put('/{idiomaEstudante}', [IdiomaEstudanteController::class, 'update'])->name('idioma.update');
+            Route::delete('/{idiomaEstudante}', [IdiomaEstudanteController::class, 'destroy'])->name('idioma.destroy');
+
+            
+        });
+
     });
     Route::group(['prefix' => 'vaga'], function ($router) {
         Route::get('', [VagaController::class, 'index'])->name('vaga.index');
         Route::get('/{vaga}', [VagaController::class, 'show'])->name('vaga.show');
+        
     });
 
-
+    Route::get('/idiomas', [IdiomaController::class])->name('idiomas.index');
 });

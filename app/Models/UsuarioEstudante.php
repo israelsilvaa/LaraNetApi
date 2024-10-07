@@ -3,6 +3,7 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Laravel\Sanctum\HasApiTokens;
 use Tymon\JWTAuth\Contracts\JWTSubject;
@@ -48,8 +49,15 @@ class UsuarioEstudante extends Authenticatable implements JWTSubject
         return [];
     }
 
-    public function formacoesAcademicas(): HasMany{
+    public function formacoesAcademicas(): HasMany
+    {
         return $this->hasMany(FormacaoAcademica::class, 'usuario_estudante_id');
-    
+
+    }
+
+    public function idiomas(): BelongsToMany
+    {
+
+        return $this->belongsToMany(Idioma::class, 'idiomas_estudantes', 'usuario_estudante_id', 'idioma_id')->withPivot('nivel');
     }
 }
