@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthEmpresaController;
 use App\Http\Controllers\AuthEstudanteController;
+use App\Http\Controllers\FormacaoAcademicaController;
 use App\Http\Controllers\RegisterUsuarioEmpresa;
 use App\Http\Controllers\RegisterUsuarioEstudante;
 use App\Http\Controllers\VagaController;
@@ -66,14 +67,18 @@ Route::group(['middleware' => 'api'], function ($router) {
             Route::get('/inscrever/{vaga}', [VagaEstudanteController::class, 'inscreverEstudanteVaga'])->name('vaga.inscrever');
             Route::get('/remover-inscricao/{vaga}', [VagaEstudanteController::class, 'removerInscricao'])->name('vaga.remover-inscricao');
         });
+        Route::group(['prefix' => 'formacao-academica'], function ($router) {
+            Route::get('minhas-formacoes', [FormacaoAcademicaController::class, 'getByEstudanteAutenticado'])->name('formacao-academica.minhas-formacoes');
+            Route::post('', [FormacaoAcademicaController::class, 'store'])->name('formacao-academica.store');
+            Route::put('/{formacaoAcademica}', [FormacaoAcademicaController::class, 'update'])->name('formacao-academica.update');
+            Route::delete('/{formacaoAcademica}', [FormacaoAcademicaController::class, 'destroy'])->name('formacao-academica.destroy');
+            
+        });
 
     });
     Route::group(['prefix' => 'vaga'], function ($router) {
         Route::get('', [VagaController::class, 'index'])->name('vaga.index');
         Route::get('/{vaga}', [VagaController::class, 'show'])->name('vaga.show');
-
-
-
     });
 
 

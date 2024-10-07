@@ -25,16 +25,18 @@ class UsuarioEstudanteFormRequest extends FormRequest
             "nome" => "required|max:100",
             "sobrenome" => "required|max:100",
             "email" => "required|email|unique:usuarios_estudantes",
+            'cpf' => "required|cpf",
             "data_nascimento" => "required|date",
             "password" => "required|min:8|confirmed",
         ];
     }
 
-    public function atrributes()
+    public function atrributes(): array
     {
 
         return [
             "nome" => "Nome",
+            "cpf" => "CPF",
             "sobrenome" => "Sobrenome",
             "email" => "Email",
             "data_nascimento" => "Data Nascimento",

@@ -22,7 +22,7 @@ class VagaEstudanteController extends Controller
                 "vaga_id" => $vaga->id,
                 "usuario_estudante_id" => $estudanteId
             ]);
-
+            
             return response()->json(["message" => "Inscrição Realizada com sucesso"], 201);
         }
 

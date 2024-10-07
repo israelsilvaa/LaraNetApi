@@ -3,6 +3,7 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Laravel\Sanctum\HasApiTokens;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 use Illuminate\Notifications\Notifiable;
@@ -20,6 +21,7 @@ class UsuarioEstudante extends Authenticatable implements JWTSubject
         'data_nascimento',
         'email',
         'password',
+        'cpf'
     ];
 
 
@@ -44,5 +46,10 @@ class UsuarioEstudante extends Authenticatable implements JWTSubject
     public function getJWTCustomClaims()
     {
         return [];
+    }
+
+    public function formacoesAcademicas(): HasMany{
+        return $this->hasMany(FormacaoAcademica::class, 'usuario_estudante_id');
+    
     }
 }
