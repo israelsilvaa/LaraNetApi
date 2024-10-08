@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthEmpresaController;
 use App\Http\Controllers\AuthEstudanteController;
 use App\Http\Controllers\ConquistaEstudanteController;
 use App\Http\Controllers\FormacaoAcademicaController;
+use App\Http\Controllers\HabilidadeEstudanteController;
 use App\Http\Controllers\IdiomaController;
 use App\Http\Controllers\IdiomaEstudanteController;
 use App\Http\Controllers\RegisterUsuarioEmpresa;
@@ -96,6 +97,15 @@ Route::group(['middleware' => 'api'], function ($router): void {
             Route::put('/{conquistaEstudante}', [ConquistaEstudanteController::class, 'update'])->name('conquista.update');
             Route::delete('/{conquistaEstudante}', [ConquistaEstudanteController::class, 'destroy'])->name('conquista.destroy');
 
+        });
+
+        Route::group(['prefix' => 'habilidade'], function ($router): void {
+
+            Route::get('minhas-habilidades', [HabilidadeEstudanteController::class, 'showByEstudanteAutenticado'])->name('habilidade.meus-conquistas');
+            Route::post('', [HabilidadeEstudanteController::class, 'store'])->name('habilidade.store');
+            Route::put('/{habilidadeEstudante}', [HabilidadeEstudanteController::class, 'update'])->name('habilidade.update');
+            Route::delete('/{habilidadeEstudante}', [HabilidadeEstudanteController::class, 'destroy'])->name('habilidade.destroy');
+                
         });
 
 
