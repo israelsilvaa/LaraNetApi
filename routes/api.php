@@ -10,6 +10,7 @@ use App\Http\Controllers\IdiomaController;
 use App\Http\Controllers\IdiomaEstudanteController;
 use App\Http\Controllers\RegisterUsuarioEmpresa;
 use App\Http\Controllers\RegisterUsuarioEstudante;
+use App\Http\Controllers\UpdateUsuarioEstudanteController;
 use App\Http\Controllers\VagaController;
 use App\Http\Controllers\VagaEstudanteController;
 use Illuminate\Http\Request;
@@ -117,6 +118,9 @@ Route::group(['middleware' => 'api'], function ($router): void {
             Route::delete('', [CurriculoEstudanteController::class, 'destroy'])->name('curriculo.destroy');
 
         });
+
+        Route::put('meus-dados', [UpdateUsuarioEstudanteController::class])->name('estudante.update');
+        
 
     });
     Route::group(['prefix' => 'vaga'], function ($router) {

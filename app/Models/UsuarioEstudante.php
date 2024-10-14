@@ -71,6 +71,7 @@ class UsuarioEstudante extends Authenticatable implements JWTSubject
 
     public function getCurriculoUrlAttribute(): mixed
     {
-        return $this->curriculo ? $this->curriculo->curriculo_url : null;
+        $baseUrl = config('app.url'); // Obtém a URL base do projeto a partir do arquivo de configuração
+        return $this->curriculo ? $baseUrl . '/storage/' . $this->curriculo->curriculo_url : null;
     }
 }

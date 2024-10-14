@@ -17,7 +17,6 @@ class RegisterUsuarioEmpresa extends Controller
     public function __invoke(UsuarioEmpresaFormRequest $request): JsonResponse
     {
 
-
         $data = $request->validated();
 
 
