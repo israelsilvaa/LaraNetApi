@@ -81,6 +81,8 @@ WORKDIR /app
 COPY . .
 COPY --from=base /var/www/html/vendor /app/vendor
 
+
+
 # Use yarn or npm depending on what type of
 # lock file we might find. Defaults to
 # NPM if no lock file is found.

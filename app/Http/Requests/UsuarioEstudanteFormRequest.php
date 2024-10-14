@@ -24,8 +24,9 @@ class UsuarioEstudanteFormRequest extends FormRequest
         return [
             "nome" => "required|max:100",
             "sobrenome" => "required|max:100",
+            "curriculo" => "required|mimes:pdf|max:10120",
             "email" => "required|email|unique:usuarios_estudantes",
-            'cpf' => "required|cpf",
+            'cpf' => "required|cpf|unique:usuarios_estudantes",
             "data_nascimento" => "required|date",
             "password" => "required|min:8|confirmed",
         ];
@@ -39,6 +40,7 @@ class UsuarioEstudanteFormRequest extends FormRequest
             "cpf" => "CPF",
             "sobrenome" => "Sobrenome",
             "email" => "Email",
+            "curriculo" => "Currículo",
             "data_nascimento" => "Data Nascimento",
             "password" => "Senha",
             "password_confirmation" => "Repita a Senha",

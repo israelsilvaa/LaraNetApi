@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthEmpresaController;
 use App\Http\Controllers\AuthEstudanteController;
 use App\Http\Controllers\ConquistaEstudanteController;
+use App\Http\Controllers\CurriculoEstudanteController;
 use App\Http\Controllers\FormacaoAcademicaController;
 use App\Http\Controllers\HabilidadeEstudanteController;
 use App\Http\Controllers\IdiomaController;
@@ -105,9 +106,17 @@ Route::group(['middleware' => 'api'], function ($router): void {
             Route::post('', [HabilidadeEstudanteController::class, 'store'])->name('habilidade.store');
             Route::put('/{habilidadeEstudante}', [HabilidadeEstudanteController::class, 'update'])->name('habilidade.update');
             Route::delete('/{habilidadeEstudante}', [HabilidadeEstudanteController::class, 'destroy'])->name('habilidade.destroy');
-                
+
         });
 
+        Route::group(['prefix' => 'curriculo'], function ($router): void {
+
+            Route::get('meu-curriculo', [CurriculoEstudanteController::class, 'showByEstudanteAutenticado'])->name('curriculo.meu-curriculo');
+            Route::post('', [CurriculoEstudanteController::class, 'store'])->name('curriculo.store');
+            Route::put('', [CurriculoEstudanteController::class, 'update'])->name('curriculo.update');
+            Route::delete('', [CurriculoEstudanteController::class, 'destroy'])->name('curriculo.destroy');
+
+        });
 
     });
     Route::group(['prefix' => 'vaga'], function ($router) {
