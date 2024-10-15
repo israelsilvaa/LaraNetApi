@@ -14,6 +14,7 @@ console_command = 'php /var/www/html/artisan tinker'
 
 [env]
   APP_ENV = 'local'
+  APP_URL= "https://link-siee.fly.dev"
   APP_DEBUG = 'true'
   LOG_CHANNEL = 'stderr'
   LOG_LEVEL = 'info'
@@ -34,7 +35,7 @@ console_command = 'php /var/www/html/artisan tinker'
   memory = '1gb'
   cpu_kind = 'shared'
   cpus = 1
-  
+
 [mounts]
   source="storage_vol"
   destination="/var/www/html/storage"

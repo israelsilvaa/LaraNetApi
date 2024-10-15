@@ -37,6 +37,7 @@ class UsuarioEmpresa extends Authenticatable implements JWTSubject
         'password' => 'hashed',
     ];
 
+    protected $appends = ['logo_full_url'];
 
     public function getJWTIdentifier()
     {
@@ -47,5 +48,11 @@ class UsuarioEmpresa extends Authenticatable implements JWTSubject
     public function getJWTCustomClaims()
     {
         return [];
+    }
+
+    public function getLogoFullUrlAttribute(): string
+    {
+        $baseUrl = config('app.url'); // Obtém a URL base do projeto a partir do arquivo de configuração
+        return $baseUrl . '/storage/' . $this->image_logo_url;
     }
 }

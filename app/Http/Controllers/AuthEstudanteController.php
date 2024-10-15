@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\LoginFormRequest;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 class AuthEstudanteController extends Controller
 {
-    public function login(LoginFormRequest $request){
+    public function login(LoginFormRequest $request): JsonResponse
+    {
 
         $credentials = $request->only('email', 'password');
 
@@ -16,16 +18,16 @@ class AuthEstudanteController extends Controller
         }
         $user = Auth::guard('estudante')->user();
         return response()->json(['token' => $token, "usuario" => $user]);
-    
-    
+
+
     }
 
-    public function me()
+    public function me(): JsonResponse
     {
         return response()->json(auth('estudante')->user());
     }
 
-    public function logout()
+    public function logout(): JsonResponse
     {
         auth('estudante')->logout();
 
