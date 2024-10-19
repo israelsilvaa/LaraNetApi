@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthEmpresaController;
 use App\Http\Controllers\AuthEstudanteController;
 use App\Http\Controllers\ConquistaEstudanteController;
 use App\Http\Controllers\CurriculoEstudanteController;
+use App\Http\Controllers\CursoController;
 use App\Http\Controllers\FormacaoAcademicaController;
 use App\Http\Controllers\HabilidadeEstudanteController;
 use App\Http\Controllers\IdiomaController;
@@ -120,7 +121,7 @@ Route::group(['middleware' => 'api'], function ($router): void {
         });
 
         Route::put('meus-dados', [UpdateUsuarioEstudanteController::class])->name('estudante.update');
-        
+
 
     });
     Route::group(['prefix' => 'vaga'], function ($router) {
@@ -129,5 +130,6 @@ Route::group(['middleware' => 'api'], function ($router): void {
 
     });
 
-    Route::get('/idiomas', [IdiomaController::class])->name('idiomas.index');
+    Route::get('/idiomas', IdiomaController::class)->name('idiomas.index');
+    Route::get('/cursos', CursoController::class)->name('cursos.index');
 });

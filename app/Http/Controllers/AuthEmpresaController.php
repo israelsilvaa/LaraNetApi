@@ -24,6 +24,7 @@ class AuthEmpresaController extends Controller
 
     public function me(): JsonResponse
     {
+        
         return response()->json(auth('empresa')->user());
     }
 
