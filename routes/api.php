@@ -71,6 +71,7 @@ Route::group(['middleware' => 'api'], function ($router): void {
     Route::group(['prefix' => 'estudante', 'middleware' => 'auth:estudante'], function ($router) {
 
         Route::group(['prefix' => 'vaga'], function ($router): void {
+            Route::get('/minhas-vagas', [VagaEstudanteController::class, 'showVagasByEstudanteAuth'])->name('vaga.minhas-vagas');
             Route::get('/inscrever/{vaga}', [VagaEstudanteController::class, 'inscreverEstudanteVaga'])->name('vaga.inscrever');
             Route::get('/remover-inscricao/{vaga}', [VagaEstudanteController::class, 'removerInscricao'])->name('vaga.remover-inscricao');
         });

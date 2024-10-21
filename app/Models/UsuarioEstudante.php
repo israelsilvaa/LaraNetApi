@@ -74,4 +74,9 @@ class UsuarioEstudante extends Authenticatable implements JWTSubject
         $baseUrl = config('app.url'); // Obtém a URL base do projeto a partir do arquivo de configuração
         return $this->curriculo ? $baseUrl . '/storage/' . $this->curriculo->curriculo_url : null;
     }
+    public function vagas(): HasMany
+    {
+        return $this->hasMany(VagaEstudante::class, 'usuario_estudante_id');
+    }
+   
 }

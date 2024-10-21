@@ -7,13 +7,15 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-
+use Illuminate\Support\Facades\Auth;
 class Vaga extends Model
 {
     use HasFactory;
 
     protected $fillable = ['nome', 'descricao', 'tipo_estagio', 'turno', 'valor', 'usuario_empresa_id'];
     protected $with = ['cursos', 'empresa'];
+
+    protected $appends = ['estudante_esta_escrito'];
 
     public function cursos(): BelongsToMany
     {
@@ -43,4 +45,19 @@ class Vaga extends Model
 
         return $this->estudantes()->where('usuario_estudante_id', $estudanteID)->exists();
     }
+    public function getestudanteEstaEscritoAttribute()
+    {
+        // Obter o usuário autenticado
+        $usuario = Auth::guard('estudante')->user();
+
+        // Verificar se o usuário autenticado é um estudante
+        if ($usuario && $usuario instanceof UsuarioEstudante) {
+            // Verificar se o estudante está inscrito na vaga
+            return $this->estudantes()->where('usuario_estudante_id', $usuario->id)->exists();
+        }
+
+        // Retornar false se o usuário não for um estudante ou não estiver inscrito
+        return false;
+    }
+    
 }

@@ -13,4 +13,11 @@ class VagaEstudante extends Model
     protected $table = 'vagas_estudantes';
 
     protected $fillable = ["vaga_id", "usuario_estudante_id"];
+
+    public function vaga()
+    {
+        return $this->belongsTo(Vaga::class, 'vaga_id');
+    }
+
+    
 }

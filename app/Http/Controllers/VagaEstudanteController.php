@@ -2,17 +2,28 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\UsuarioEmpresa;
+use App\Models\UsuarioEstudante;
 use App\Models\Vaga;
 use App\Models\VagaEstudante;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
+
 class VagaEstudanteController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
+
+     public function showVagasByEstudanteAuth(): JsonResponse
+     {
+        $vagasEstudanteID = Auth::guard('estudante')->user()->vagas->pluck('vaga_id');
+        
+        $vagas = Vaga::whereIn('id', $vagasEstudanteID)->paginate(10);
+         return response()->json($vagas);
+     }
     public function inscreverEstudanteVaga(Vaga $vaga): JsonResponse
     {
         $estudanteId = Auth::guard('estudante')->user()->id;
