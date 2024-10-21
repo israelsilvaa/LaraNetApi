@@ -63,7 +63,22 @@ class VagaController extends Controller
      */
     public function show(Vaga $vaga): JsonResponse
     {
+        $user = Auth::guard('empresa')->user();
+
+        if ($user) {
+            $empresaID = $user->id;
+
+            if ($vaga->usuario_empresa_id === $empresaID) {
+                $vaga->load('estudantes');
+            }
+            }
+    
+            
+
+
+
         return response()->json($vaga);
+       
     }
 
 
@@ -97,5 +112,5 @@ class VagaController extends Controller
 
     }
 
-    
+
 }
