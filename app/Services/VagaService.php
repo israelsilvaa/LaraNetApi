@@ -28,6 +28,11 @@ class VagaService
             })
             ->when(isset($data['nome_empresa']) && $data['nome_empresa'], function ($query) use ($data) {
                 $query->searchByEmpresaName($data['nome_empresa']);
+            })
+            ->when(isset($data['cursos']) && is_array($data['cursos']) && count($data['cursos']) > 0, function ($query) use ($data) {
+                $query->whereHas('cursos', function ($query) use ($data) {
+                    $query->whereIn('curso_id', $data['cursos']);
+                });
             });
     }
     public function getVagasByEmpresa(int $empresaID): Vaga|Builder
