@@ -93,7 +93,7 @@ class VagaController extends Controller
         $vaga->delete();
 
 
-        return response()->noContent();
+        return response()->json(['message' => 'Vaga deletada com sucesso']);
 
     }
 
