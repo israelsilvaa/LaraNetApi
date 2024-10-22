@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthEstudanteController;
 use App\Http\Controllers\ConquistaEstudanteController;
 use App\Http\Controllers\CurriculoEstudanteController;
 use App\Http\Controllers\CursoController;
+use App\Http\Controllers\EmpresasDestaqueController;
 use App\Http\Controllers\FormacaoAcademicaController;
 use App\Http\Controllers\HabilidadeEstudanteController;
 use App\Http\Controllers\IdiomaController;
@@ -132,7 +133,7 @@ Route::group(['middleware' => 'api'], function ($router): void {
         Route::get('/{vaga}', [VagaController::class, 'show'])->name('vaga.show');
 
     });
-
+    Route::get('empresas-destaque', EmpresasDestaqueController::class)->name('empresas-destaque.index');
     Route::get('/idiomas', IdiomaController::class)->name('idiomas.index');
     Route::get('/cursos', CursoController::class)->name('cursos.index');
 });
