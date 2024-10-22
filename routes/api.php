@@ -12,6 +12,7 @@ use App\Http\Controllers\IdiomaEstudanteController;
 use App\Http\Controllers\RegisterUsuarioEmpresa;
 use App\Http\Controllers\RegisterUsuarioEstudante;
 use App\Http\Controllers\UpdateUsuarioEstudanteController;
+use App\Http\Controllers\UpdateUsuarioEmpresaController;
 use App\Http\Controllers\VagaController;
 use App\Http\Controllers\VagaEstudanteController;
 use Illuminate\Http\Request;
@@ -58,6 +59,7 @@ Route::group(['middleware' => 'api'], function ($router): void {
     });
 
     Route::group(['prefix' => 'empresa', 'middleware' => 'auth:empresa'], function ($router) {
+        Route::post('atualizar-meus-dados', UpdateUsuarioEmpresaController::class)->name('empresa.update');
 
         Route::group(['prefix' => 'vaga'], function ($router): void {
             Route::get('/minhas-vagas', [VagaController::class, 'showVagasByEmpresaAuth'])->name('vaga.minhas-vagas');
