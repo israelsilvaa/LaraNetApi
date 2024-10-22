@@ -116,7 +116,7 @@ Route::group(['middleware' => 'api'], function ($router): void {
 
             Route::get('meu-curriculo', [CurriculoEstudanteController::class, 'showByEstudanteAutenticado'])->name('curriculo.meu-curriculo');
             Route::post('', [CurriculoEstudanteController::class, 'store'])->name('curriculo.store');
-            Route::put('', [CurriculoEstudanteController::class, 'update'])->name('curriculo.update');
+            Route::post('atualizar', [CurriculoEstudanteController::class, 'update'])->name('curriculo.update');
             Route::delete('', [CurriculoEstudanteController::class, 'destroy'])->name('curriculo.destroy');
 
         });
