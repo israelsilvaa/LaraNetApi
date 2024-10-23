@@ -15,10 +15,10 @@ class VagaService
     {
         return Vaga::orderBy('nome')
             ->when(isset($data['nome']) && $data['nome'], function ($query) use ($data) {
-                $query->where('nome', 'like', '%' . $data['nome'] . '%');
+                $query->whereRaw('LOWER(nome) like ?', ['%' . strtolower($data['nome']) . '%']);
             })
             ->when(isset($data['descricao']) && $data['descricao'], function ($query) use ($data) {
-                $query->where('descricao', 'like', '%' . $data['descricao'] . '%');
+                $query->whereRaw('LOWER(descricao) like ?', ['%' . strtolower($data['descricao']) . '%']);
             })
             ->when(isset($data['tipo_estagio']) && $data['tipo_estagio'], function ($query) use ($data) {
                 $query->where('tipo_estagio', $data['tipo_estagio']);
@@ -27,7 +27,7 @@ class VagaService
                 $query->where('turno', $data['turno']);
             })
             ->when(isset($data['nome_empresa']) && $data['nome_empresa'], function ($query) use ($data) {
-                $query->searchByEmpresaName($data['nome_empresa']);
+                $query->whereRaw('LOWER(nome_empresa) like ?', ['%' . strtolower($data['nome_empresa']) . '%']);
             })
             ->when(isset($data['cursos']) && is_array($data['cursos']) && count($data['cursos']) > 0, function ($query) use ($data) {
                 $query->whereHas('cursos', function ($query) use ($data) {
